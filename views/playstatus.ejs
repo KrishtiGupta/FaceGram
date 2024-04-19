@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "gilroy";
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }   
+        #main
+        {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(57, 57, 57);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        #main a
+        {
+            position: absolute;
+            text-decoration: none;
+            top: 2%;
+            right: 2%;
+            font-size: 50px;
+            color: white;
+        }
+        #main #status
+        {
+            width: 27vw;
+            height: 95vh;
+            background-color: black;
+            border-radius: 10px;
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            /* border: 1px solid rgba(255, 255, 255, 0.458); */
+            box-shadow: 0px 0px 5px rgb(102, 102, 102);
+        }
+        #main #status #loader
+        {
+            margin-top: 10px;
+            width: 97%;
+            height: 4px;
+            background-color: rgba(0, 0, 0, 0.086);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #main #status #loader #loaded
+        {
+            height: 100%;
+            width: 0;
+            background-color: white;
+        }
+        #main #status #userdets
+        {
+            width: 97%;
+            height: 8vh;
+            /* background-color: red; */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+        #main #status #userdets img
+        {
+            width: 8vh;
+            height: 8vh;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        #main #status #userdets p
+        {
+            font-size: 20px;
+        }
+        #main #status>img
+        {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 97%;
+            max-height: 80vh;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <a href="/feed"><i class="ri-close-fill"></i></a>
+        <div id="status">
+            <div id="loader">
+                <div id="loaded"></div>
+            </div>
+            <div id="userdets">
+                <img src="../images/uploads/<%=loggedinuser.profile%>" alt="">
+                <p><%=statusdetail.name%></p>
+
+            </div>
+            <img src="../images/uploads/<%=statusdetail.image%>" alt="">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        gsap.to("#loaded",{
+            width:"100%",
+            duration:10,
+            onComplete:function(){
+                document.querySelector("a").click();
+            }
+        })
+    </script>
+</body>
+</html>
